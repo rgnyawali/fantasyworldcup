@@ -1,0 +1,16 @@
+{% extends "main_bootstrap.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<div>
+	<h1>Register New Player</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ registerform|crispy}}   
+		<br />
+	<div class="buttonholder"><input type="submit" value="Register"></div>
+	<style>.buttonholder{text-align: center;}</style>
+	</form>
+</div>	
+{% endblock %}

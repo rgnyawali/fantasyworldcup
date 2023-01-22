@@ -1,0 +1,13 @@
+{% extends "main_bootstrap.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<form method="POST">
+	{% csrf_token %}
+	{{ form | crispy}}
+	<div class="buttonholder"><input type="submit" value="Enter"></div>
+	<style>.buttonholder{text-align: center;}</style>
+</form>
+<p>Want to register new players? <a href="{% url 'marriage:newplayer' %}">Click Here</a>.
+{% endblock %}

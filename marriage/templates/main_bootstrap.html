@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WELCOME TO MARRIAGE-GAME</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    crossorigin="anonymous">
+
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
+    crossorigin="anonymous">
+
+<link rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+     crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
+
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  crossorigin="anonymous"></script>
+<style>
+body {
+  margin:  0;
+}
+nav {
+  width:  100%; 
+  /*float:  left;*/
+}
+
+#footer {
+  position: fixed;
+  padding: 0px 0px 0px 0px;
+  bottom: 0;
+  width:  100%;
+  height:  22px;
+  background-color: #44B78B;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 1em;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.menu{
+  margin: 0;
+  padding: 10px 10px 10px 10px;
+  height:  40px;
+  background-color: #44B78B;
+}
+
+.left {
+  display:  inline;
+  float: left;
+
+}
+
+.right{
+  display: inline;
+  float: right;
+  padding:  0px 10px 0px 10px;
+}
+
+.button {
+  font-family: Arial;
+  font-size:  1.2em;
+  font-style:  none;
+  color:  #ffffff;
+  padding: 8px;
+  text-decoration: none;
+
+}
+
+.button:link {
+  background-color: #44B78B;
+  color:  #ffffff;
+}
+
+.button:hover {
+  background-color: #0C4B33;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+      <ul class="menu">
+        <li class="left"><a class="button" href="{% url 'marriage:index' %}">Home</a></li>
+      </ul>
+</nav>
+
+<div><h1>WELCOME TO THE MARRIAGE GAME</h1>
+{% block main %}
+
+{% endblock %}
+  <br />
+</div>
+<p>  </p>
+<div id="footer">
+  Developed by R, 2022
+</div>
+
+</body>
+</html>

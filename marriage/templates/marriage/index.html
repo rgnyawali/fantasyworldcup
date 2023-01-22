@@ -1,0 +1,14 @@
+{% extends "main_bootstrap.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<p> This is the main page.</p>
+
+{% if players %}
+	<p><a href ="{% url 'marriage:gameroom' %}">पुरानो खाल जारी राखौ (Continue Last Game)</a></p>
+{% endif %}
+<p><a href="{% url 'marriage:newgame' %}">नयाँ खाल शुरु गरौ (Start New Game)</a></p>
+
+<p>We have {{players}} players in our room.</p>
+{% endblock %}

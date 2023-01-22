@@ -1,0 +1,46 @@
+{% extends "main_bootstrap.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<h4 style="color:red">{{msg}}</h4>
+<form method="POST">
+	{% csrf_token %}
+	{{ form | crispy}}
+	<div class="buttonholder"><input type="submit" value="Enter"></div>
+	<style>.buttonholder{text-align: center;}</style>
+</form>
+<h1>Game Data</h1>
+{% if game_data %}
+	<table>
+		{% for player in current_player %}
+			<th>{{player.name}}</th>
+		{% endfor %}
+		<th>Time</th>
+		{% for each in game_data %}
+		<tr>
+			{% if each.r0 != "X" %}<td>{{each.s0}}</td>{% endif %}
+			{% if each.r1 != "X" %}<td>{{each.s1}}</td> {% endif %}
+			{% if each.r2 != "X" %}<td>{{each.s2}}</td> {% endif %}
+			{% if each.r3 != "X" %}<td>{{each.s3}}</td> {% endif %}
+			{% if each.r4 != "X" %}<td>{{each.s4}}</td> {% endif %}
+			<td>{{each.created_at}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<table>
+		{% for player in current_player %}
+			<th>{{player.name}}</th>
+		{% endfor %}
+		<tr class="summary">
+			{% for each in summary %}
+				<td>{{each}}</td>
+			{% endfor %}
+		</tr>
+
+	</table>
+{% else %}
+	<p> No Game Data Found </p>
+{% endif %}
+
+{% endblock %}
