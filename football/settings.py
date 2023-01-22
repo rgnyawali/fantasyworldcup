@@ -20,7 +20,7 @@ APP_NAME = 'Fantasy WorldCup'
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y4h8!i7pr8*g7ze2k4yido!a-kp#ze713r#c)6)gks1^d9y3b3'
+SECRET_KEY = '**********'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
