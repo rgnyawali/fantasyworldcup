@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Admin Page</title>
+    </head>
+    <body>
+        {{is_superuser}}
+        {% if is_superuser %}
+            <form method="POST">
+                {% csrf_token %}
+                {{form}}
+                <div class="buttonholder"><input type="submit" value="Update"></div>
+                <style>.buttonholder{text-align:center;}</style>
+            </form>
+        {% else %}
+            <p>Unauthorized Access Forbidden.</p>
+        {% endif %}
+
+    </body>
+</html>

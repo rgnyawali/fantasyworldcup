@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TT Competition">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind|Philosopher|Special+Elite|Fredericka+the+Great">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+<title>Cavanagh-Orchard TT Competition 2022</title>
+<style>
+  * {
+    box-sizing:border-box; margin:0; padding:0;
+  }
+  a{text-decoration:none; color:inherit;}
+  body{background-color:#efe2ba;font-family:Hind, sans-serif;}
+  header{width:60%; margin:10px auto; text-align:center;}
+
+  #title{
+      font-family:"Fredericka the Great",sans-serif;
+      font-size:2rem;
+      padding:30px 0 0 0;
+      margin-top: 0;
+      color:#45a29e;
+      text-shadow:0px 15px 5px rgba(0,0,0,0.1),10px 20px 5px rgba(0,0,0,0.05), -10px 20px 5px rgba(0,0,0,0.05);}
+  #subtitle{
+          font-family:"Special Elite",sans-serif;
+          color: #e85a4f;
+          text-shadow:5px 5px 12px;
+        margin-top:10px;}
+  #img{margin:5px auto;
+  display:flex;justify-content: center;}
+#match-report{width:60%; margin:0 auto; text-align:center;}
+.score{text-align:center;}
+#footer{width:100%; height:27px; text-align:center;background-color: green;}
+table{border:2px solid white; border-collapse: collapse;}
+td{border-bottom:2px solid white; text-align:left;}
+.button{margin:0 auto; width:20%; text-align:center;}
+.button p{margin-top:20px;border:2px red solid; border-radius:18px; background-color:blue;color:white;}
+#winner-line{margin-top:10px; font-size:2rem;}
+.winner{color:red;}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Cavanagh-Orchard TT Competition 2022</h1>
+  <h3 id="subtitle">The most exciting competition of the year!</h3>
+</header>
+<div id="img">
+  <img src="{% static 'tt/tt1.jpg' %}" height=300px>
+</div>
+<div id="match-report">
+  <h1>Match Report</h1>
+  <h3>Match #1: Rishi Dahal vs Tej Adhikari</h3>
+  <table>
+    <tr>
+      <td class="score" style="width:5rem">0-0</td>
+      <td>एस प्रतियोगिता को उद्घाटन गेम शुरु हुने क्रम मा रहेको छ। आफ्नो होम ग्रोउन्द को फाईदा लिने प्रयास मा मामा निकै उत्सहित हुनु हुन्छ।
+ॠषिजी पनि आफ्नो दम्दार प्रदर्शन देखाएर सबै लाइ चकित बनाउने प्रयास मा हुनुहुन्छ।
+दुबइ खेलदी हरु वर्म अप सकेर तस को लागि तयारी अवस्था मा।</td>
+    </tr>
+    <tr>
+      <td class="score">1-0</td>
+      <td>रेफ्री द्वर खेल सुरु गर्ने ईशारा। ॠषिजी को पहिलो सर्भिस निकै कडा
+        गएको छ। तेज जि ले निकै मुस्किल ले रेतुर्न गर्नु वएको छ। ॠषि जि द्वर
+         कडा सट प्रहार । तेज जि ले सट उथौन सक्नु वएन।
+         पहिलो पोइन्ट ॠषि जि लाई। </td>
+    </tr>
+    <tr>
+      <td class="score">16-20</td>
+      <td>Now here goes the game point for Tej. What a wonderful
+      game between these two veterans. Rishi looked tired towards the
+        end of the game. We can see Rishi's family in the pavilion now.
+        Nothing to worry. We have four more sets to go. As a spectators, we can only
+        expect a competitive end to this inaugural game of the competition.
+      </td>
+    </tr>
+  </table>
+  <p id="winner-line">And the Winner is <span class="winner">Tej Adhhikari</span></p>
+</div>
+<div class="button"><p><a href="{% url 'tt:tt_index' %}">BACK</a></p></div>
+<div style="height:50px"></div>
+<div id="footer"><p>Designed by R, 2022</p></div>
+</body>
+</html>

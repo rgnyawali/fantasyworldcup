@@ -1,0 +1,295 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TT Competition">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind|Philosopher|Special+Elite|Fredericka+the+Great">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+<title>Cavanagh-Orchard TT Competition 2022</title>
+<style>
+  *{box-sizing:border-box; margin:0; padding:0;}
+  a{text-decoration:none; color:inherit;}
+  body{background-color:#efe2ba;font-family:Hind, sans-serif;}
+  #title{
+      font-family:"Fredericka the Great",sans-serif;
+      font-size:2rem;
+      padding:30px 0 0 0;
+      margin-top: 0;
+      color:#45a29e;
+      text-shadow:0px 15px 5px rgba(0,0,0,0.1),10px 20px 5px rgba(0,0,0,0.05), -10px 20px 5px rgba(0,0,0,0.05);}
+  #subtitle{
+          font-family:"Special Elite",sans-serif;
+          color: #e85a4f;
+          text-shadow:5px 5px 12px;
+        margin-top:10px;}
+  #img{margin:5px auto;
+  display:flex;justify-content: center;}
+  #intro{ width: 60%; margin:20px auto; text-align: center;}
+
+  header{width:60%; margin:10px auto; text-align:center;}
+#leader{margin: 10px auto; width:80%; text-align: center;}
+caption{margin: 0 auto; font-size: 3rem; width:100%;}
+
+table, th, td{
+  border-collapse:collapse;
+  border:2px solid white;
+/*border-radius:6px;*/}
+#leader tr:hover {
+  background-color:rgb(240,240,244);}
+th{
+  background-color:#96D4D4;
+}
+td{
+  /*background-color:#888888;*/
+  text-align:center;
+}
+th,td{padding:10px;}
+
+table{width:100%;}
+.green{color:green; font-size: 1.2rem;}
+.red{color:red; font-size:1.2rem;}
+
+.reports{ width:60%; margin:80px auto 0 auto; text-align:center;}
+.match{margin-bottom:40px;}
+.button{display:inline-block; border-radius:20px; background-color: blue; color:white;border:2px solid red; padding:5px 8px 0px 8px;}
+.result{margin-top:5px;}
+.button:hover{background-color:rgb(240,240,244); color:blue;}
+#footer{width:100%; height:27px; text-align:center;background-color: green;}
+
+.rules{width:60%; margin:80px auto; }
+.rules h3{text-align:center; margin-bottom:10px;}
+.rules li{padding-left:10px;}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Cavanagh-Orchard TT Competition 2022</h1>
+  <h3 id="subtitle">The most exciting competition of the year!</h3>
+</header>
+<div id="img">
+  <img src="{% static 'tt/tt1.jpg' %}" width=70%>
+</div>
+<div id="intro">
+  <p>Cavanagh-Orchard TT Competition 2022 is a pioneer competition of its type. It was imagined by the enthusiastic 40+ players from DFC & DCC, who needed some
+  means to get in touch with each other and get some fat out of their bellies. The format in its own is probably the first of its kind in any competitive games so far.
+  Players get to choose their own playing time, venue, referee and spectators. This TT competition will unite people around not only Cavanagh & Orchard but also to the
+  neighbouring communities and hopefully, the entire city of Edmonton.</p>
+</div>
+<div id="leader">
+  <table>
+    <caption><img src="{% static 'tt/tt2.jpg' %}" height=40px />   Leaderboard   <img src="{% static 'tt/tt2.jpg' %}" height=40px /></caption>
+    <tr>
+      <th style="width:3rem">Rank</th>
+      <th style="width:12rem">Player</th>
+      <th style="width:3rem">P</th>
+      <th style="width:3rem">W</th>
+      <th style="width:3rem">L</th>
+      <th style="width:3rem">PT</th>
+      <th style="width:10rem">Form</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Ramesh Regmi</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td><i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-check green"></i></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Tej Adhikari</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td><i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Sunal Ojha</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td><i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red"></i></td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>Rishi Dahal</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td><i class="fa-solid fa-circle-xmark red" style="color:red"></i> <i class="fa-solid fa-circle-xmark red" style="color:red"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i></td>
+    </tr>
+
+    <!-- To add new row of players, copy the <tr> below.
+    <tr>
+      <td>4</td>
+      <td>Player 4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+      <td style="width:10rem"><i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i> <i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i> <i class="fa-solid fa-circle-check green"></i></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Player 5</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+      <td><i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i> <i class="fa-solid fa-circle-check green"></i> <i class="fa-solid fa-circle-xmark red" style="color:red">
+      </i> <i class="fa-solid fa-circle-check green"></i></td>
+    </tr> -->
+  </table>
+</div>
+<div class="reports">
+  <h2>Match Summary</h2>
+<div class="match">
+  <h3 class="match-number">Match #1</h3>
+  <h4>Date: 2022 Sep 25 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Rishi Dahal</th>
+      <td>9</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Ramesh Regmi</th>
+      <td>11</td>
+      <td>15</td>
+    </tr>
+  </table>
+  <p class="result">Result: Ramesh Regmi wins 2-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button">REPORT</span></p>
+</div>
+
+<div class="match">
+  <h3 class="match-number">Match #2</h3>
+  <h4>Date: 2022 Sep 25 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Ramesh Regmi</th>
+      <td>4</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Tej Adhikari</th>
+      <td>11</td>
+      <td>8</td>
+      <td>7</td>
+    </tr>
+  </table>
+  <p class="result">Result: Ramesh Regmi wins 2-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button">REPORT</span></p>
+</div>
+
+<div class="match">
+  <h3 class="match-number">Match #3</h3>
+  <h4>Date: 2022 Sep 25 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Rishi Dahal</th>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Tej Adhikari</th>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+  </table>
+  <p class="result">Result: Tej Adhikari wins 2-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button">REPORT</span></p>
+</div>
+
+<div class="match">
+  <h3 class="match-number">Match #4</h3>
+  <h4>Date: 2022 Oct 5 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Tej Adhikari</th>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Sunal Ojha</th>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+  </table>
+  <p class="result">Result: Tej Adhikari wins 2-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button">REPORT</span></p>
+</div>
+
+<div class="match">
+  <h3 class="match-number">Match #5</h3>
+  <h4>Date: 2022 Oct 5 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Sunal Ojha</th>
+      <td>11</td>
+      <td>7</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Rishi Dahal</th>
+      <td>9</td>
+      <td>11</td>
+      <td>9</td>
+    </tr>
+  </table>
+  <p class="result">Result: Sunal Ojha wins 2-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button">REPORT</span></p>
+</div>
+<!-- To add a new match, copy the div below and edit.
+<div class="match">
+  <h3 class="match-number">Match ##</h3>
+  <h4>Date: 2022 Sep 20 | Venue: Adhikari Niwas</h4>
+  <table>
+    <tr>
+      <th>Player 3</th>
+      <td>20</td>
+      <td>16</td>
+      <td>20</td>
+      <td>18</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>Player 4</th>
+      <td>15</td>
+      <td>20</td>
+      <td>16</td>
+      <td>20</td>
+      <td>12</td>
+    </tr>
+  </table>
+  <p class="result">Result: Player 4 wins 3-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="button"><a href="{% url 'tt:tt_detail' %}">REPORT</a></span></p>
+</div>
+-->
+</div>
+<div class="rules">
+    <h3>नियमहरु</h3>
+    <ol>
+        <li>Round-robin म्याचहरु १०-१० points को Best of Three हुनेछ  ।</li>
+        <li>Play-off र Final मैच १०-१० points को Best of Five हुनेछ ।</li>
+        <li>Round-robin मा सबै ले सबै संग खेल्न पर्ने छ ।</li>
+        <li>Top ४ team Play-Off मा प्रवेश गर्ने छ । IPL को नियम जस्तै गरेर play-off हुनेछ ।</li>
+        <li>यो प्रतियोगिता खेल्ने कुनै time table नभएको ले, आफ्नो-आफ्नो opponent संग सल्लाह गरी आफै अनुकूल खेल्न पर्ने छ । तर एक जना मध्यस्तकर्ता वा referee राख्न पर्ने छ ।</li>
+        <li>खेल मा भएको हार-जीत को हिसाब-किताब (स्कोर सहित) FB ग्रूप लाई जानकारी गराऊनु पर्ने छ ।</li>
+        <li>खेल को दौरान केही विवाद भएको खंड मा स्वयं २ खेलाडी, referee र दर्शक मिलेर समाधान गर्न पर्ने छ ।</li>
+        <li>यो प्रतियोगिता September १५ देखी शुरू गरी तेस्को केही महीना भित्र सीध्याउने कार्यक्रम रहेको छ ।</li>
+        <li>First र second लाई बिशेष पुरस्कार को बेबस्ता गरीएको छ ।</li>
+        <li>Round-robin म्याच सिदीए पछी, येदि 4th र 5th position मा रहेको टीम को points बराबर भएको खंडमा, round-robin मा खेल्दाको head-to-head गेम जीतेको खेलाडी 4th position भई Play-off मा जाने र हारेको खेलाडी 5th भई टूर्नामेण्ट बाट बाहीरनेछ ।</li>
+    </ol>
+</div>
+<div id="footer"><p>Developed by R, 2022</p></div>
+</body>
+</html>
