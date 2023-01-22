@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FANTASY WORLDCUP 2022</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    crossorigin="anonymous">
+
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
+    crossorigin="anonymous">
+
+<link rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+     crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
+
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  crossorigin="anonymous"></script>
+<style>
+body {
+  margin:  0;
+}
+nav {
+  width:  100%;
+  /*float:  left;*/
+}
+
+#footer {
+  position: relative;
+  padding: 10px 0px 10px 0px;
+  bottom: 0;
+  width:  100%;
+  height:  32px;
+  background-color: #44B78B;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 1em;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.menu{
+  margin: 0;
+  padding: 10px 10px 10px 10px;
+  height:  40px;
+  background-color: #44B78B;
+}
+
+.left {
+  display:  inline;
+  float: left;
+
+}
+
+.right{
+  display: inline;
+  float: right;
+  padding:  0px 10px 0px 10px;
+}
+
+.button {
+  font-family: Arial;
+  font-size:  1.2em;
+  font-style:  none;
+  color:  #ffffff;
+  padding: 8px;
+  text-decoration: none;
+
+}
+
+.button:link {
+  background-color: #44B78B;
+  color:  #ffffff;
+}
+
+.button:hover {
+  background-color: #0C4B33;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+
+.column {
+  /*float: left; */
+  width: 80%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+      <ul class="menu">
+        <li class="left"><a class="button" href="{% url 'home:index' %}">Home</a></li>
+        {% if user.is_authenticated %}
+        <li class="right"><a class="button" href="{% url 'logout' %}?next={% url 'worldcup:worldcup_index' %}">{{user.username}}::Logout</a></li>
+        <li class="right"><a class="button" href="{% url 'worldcup:rules' %}">Rules</a></li>
+        <li class="right"><a class="button" href="{% url 'worldcup:summary' %}">View Summary</a></li>
+        <li class="right"><a class="button" href="{% url 'worldcup:prediction' %}">My Predictions</a></li>
+        {% else %}
+        <li class="right"><a class="button" href="{% url 'login' %}?next={% url 'worldcup:worldcup_index' %}">Login</a></li>
+        <li class="right"><a class="button" href="{% url 'worldcup:register' %}?next={% url 'worldcup:worldcup_index' %}">Register</a></li>
+        {% endif %}
+      </ul>
+</nav>
+
+<h2><a href="{% url 'worldcup:worldcup_index' %}">FANTASY WORLDCUP 2022</a></h2>
+<p>{{isauth}}</p>
+<div class="row">
+  <div class="column" style="background-color:#FFFFFF;">
+      <!-- {% block leftgroups %}
+  <h2>Group A</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_A %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  <h2>Group B</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_B %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Group C</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_C %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Group D</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_D %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+{% endblock %} -->
+  </div>
+  <div class="column" style="background-color:#FFFFFF;">
+  {% block leaderboard %}
+
+  {% endblock %}
+  </div>
+  <div class="column" style="background-color:#FFFFFF;">
+    <!-- {% block rightgroups %}
+<h2>Group E</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_E %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  <h2>Group F</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_F %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Group G</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_G %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Group H</h2>
+    <table>
+      <th>Pos</th>
+      <th> </th>
+      <th>Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Points</th>
+      {% for team in team_H %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img style="width: 50%;" src="{{ team.flag.url }}" /></td>
+        <td>{{team.name}}</td>
+        <td>{{team.played}}</td>
+        <td>{{team.won}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lost}}</td>
+        <td>{{team.gf}}</td>
+        <td>{{team.ga}}</td>
+        <td>{{team.gd}}</td>
+        <td>{{team.points}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endblock %} -->
+  </div>
+  <br />
+</div>
+    <div id="footer">
+      Developed by Roshan, 2022
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="DFC Fantasy World Cup 2022">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind|Philosopher|Special+Elite|Fredericka+the+Great">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+	<title>DFC Fantasy World Cup 2022</title>
+	<style>
+		*{box-sizing:border-box; margin:0; padding:0;}
+		a{text-decoration:none; color:inherit;}
+		body{background-color:#efe2ba;font-family:Hind, sans-serif;}
+		header{width:80%; margin:10px auto 60px; text-align:center;}
+		#title{
+    	  font-family:"Fredericka the Great",sans-serif;
+    	  font-size:2rem;
+    	  padding:30px 0 0 0;
+    	  margin-top: 0;
+    	  color:#45a29e;
+    	  text-shadow:0px 15px 5px rgba(0,0,0,0.1),10px 20px 5px rgba(0,0,0,0.05), -10px 20px 5px rgba(0,0,0,0.05);}
+		#subtitle{
+        font-family:"Special Elite",sans-serif;
+        color: #e85a4f;
+        text-shadow:5px 5px 12px;
+        margin-top:10px;}
+        .buttons > ul{display: flex;justify-content: space-evenly; flex-wrap: wrap; align-items: center;}
+        .button {display:inline-block; border-radius:20px; background-color: blue; color:white;border:2px solid red; padding:5px 8px 0px 8px;}
+        .button:hover{background-color:rgb(240,240,244); color:blue;}
+        #today{margin: 50px auto; width:80%; background-color: yellow; border: 2px solid green;border-radius: 5px;text-align: center;font-size: 2rem;}
+        #leader, #chat{margin: 10px auto; width:80%; text-align: center;}
+		caption{margin: 0 auto; font-size: 3rem; width:100%;}
+		table, th, td{
+			border-collapse:collapse;
+			border:2px solid white; }
+		#leader tr:hover {background-color:rgb(240,240,244);}
+		th{background-color:#96D4D4;}
+		td{text-align:center;}
+		th,td{padding:10px;}
+		table{width:100%}
+		.tablefoot{text-align:left;margin-top: 5px;font-size: 0.75rem;}
+		#footer{width:100%; height:27px; text-align:center;background-color: #4056a1; color: white;}
+		#chat{margin-top: 50px;background-color: rgb(237,238,240);border-radius: 10px;}
+		.buttonholder{text-align:center;}
+		.post{text-align:left; padding-left:5px;}
+		#ad{margin-top:20px; margin-bottom:50px; font-size:1.1rem; text-align:center;}
+		#ad p{border:2px solid green;}
+		#ad a{color:blue;}
+		#ad a:hover{color:white; background-color:blue;}
+
+		#dyk{margin: 50px auto; width:80%; border: 2px solid green;border-radius: 5px; font-size:1rem;}
+		.faq{padding-left:30px; list-style-type: "→"}
+		.items{padding-left:10px;}
+		.winner{font-weight: bold;margin-top: 30px;}
+		.winners{padding-left:20px;}
+		.center{text-align:center;}
+
+  	</style>
+  </head>
+  <body>
+	<header>
+  	  	<h1 id="title">DFC Fantasy WorldCup 2022</h1>
+  		<h3 id="subtitle">Let's Enjoy Responsibly</h3>
+	</header>
+	<main>
+		<div class="buttons">
+			<ul>
+				<li class="button"><a href="{% url 'home:index' %}">Home</a></li>
+				{% if user.is_authenticated %}
+				  <li class="button"><a href="{% url 'worldcup:prediction' %}">My Predictions</a></li>
+				  <li class="button"><a href="{% url 'worldcup:summary' %}">My Summary</a></li>
+				  <!--<li class="button">Rules</li>-->
+				  <li class="button"><a href="{% url 'logout' %}?next={% url 'worldcup:worldcup_index' %}">{{user.username}}::Logout</a></li>
+				{% else %}
+                  <li class="button"><a href="{% url 'login' %}?next={% url 'worldcup:worldcup_index' %}">Login</a></li>
+                  <li class="button"><a href="{% url 'worldcup:register' %}?next={% url 'worldcup:worldcup_index' %}">Register</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div id="today">
+			<p>:: And the <strong>WINNER</strong> is <strong>James7</strong>. ::
+			</p>
+		</div>
+		<div id="dyk">
+			<h2 class="center">Do You Know?</h2>
+			<ul class="faq">
+				<li class="items">All of us (11 in this group) think <strong>Argentina & England</strong> will be in <em>Quarters</em> but only 10 of us think <strong>Brazil and France</strong> will be in <em>Quarters</em>.</li>
+				<li class="items">8 people think <strong>Brazil</strong> will be in <em>Semis</em> however 7 people guessed <strong>Argentina, England or France</strong> will be in <em>Semis</em>.</li>
+				<li class="items">7 people have predicted <strong>Brazil</strong> will be in <em>Finals</em> but only 4 people think <strong>Argentina or France</strong> will be in <em>Finals</em> and 3 people predicted <strong>Germany</strong> will be in <em>Finals</em>.</li>
+			</ul>
+			<p class="winner">The Number of Prediction for <em>Winners</em> were:</p>
+			<ul class="winners">
+				<li>Brazil: 5</li>
+				<li>Argentina: 3</li>
+				<li>Germany: 2</li>
+				<li>France: 1</li>
+			</ul>
+		</div>
+		<div id="leader">
+		    {% if players %}
+			<table>
+				<caption>Leaderboard</caption>
+				<tr>
+				  <th style="width:3rem">Rank</th>
+				  <th style="width:12rem">Player</th>
+				  <th style="width:3rem">Points</th>
+				</tr>
+				{% for player in players %}
+				<tr>
+				  <td>{{forloop.counter}}</td>
+				  <td>{{player.owner}}</td>
+				  <td>{{player.points}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% else %}
+			<p>The leaderboard is currently empty. It will be updated everyday. Please check back tomorrow.</p>
+			{% endif %}
+			<p class="tablefoot"><em>*Your user account will be verified before it shows up in the leaderboard.
+			You can start entering your predictions though, it will be saved.</em></p>
+		    <iframe height="250" src="https://www.youtube.com/embed/GonC2tkrlYE"></iframe>
+		  </div>
+		<div id="chat">
+			<h1>Chat</h1>
+			<p class="tablefoot"><em>Please Note: No inappropriate language or comments accepted.
+			In such cases, your comments might be removed from this post and your account will be disabled.</em></p>
+
+			<form method="post" action="{% url 'worldcup:worldcup_index' %}">
+                {% csrf_token %}
+                {{ commentform |crispy }}
+                <div class="buttonholder"><input type="submit" value="Post"></div>
+            </form>
+            {% for comments in comment %}
+                <p class="post"><strong>{{comments.owner}}</strong> (<i>{{comments.created_at}}</i>): {{comments.text}}</p>
+                <hr>
+            {% endfor %}
+		</div>
+		<div id="ad">
+		    <p>Don't forget to check out our <a href="{% url 'tt:tt_index' %}">TT league</a>.</p>
+		</div>
+  	</main>
+  	<div id="footer"><p>Developed by R, 2022</p></div>
+  </body>
+</html>

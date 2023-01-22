@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+<html>
+<head>
+  <title>Temporary File</title>
+</head>
+<body>
+  {% if is_superuser %}
+    <p>I got a superuser</p>
+    <form method="POST">
+      {% csrf_token %}
+      {{ newform|crispy}}
+      <div class="buttonholder"><input type="submit" value="Update"></div>
+      <style>.buttonholder{text-align:center;}</style>
+    </form>
+
+    <p>Check if all the users are added in the leaderboard.</p>
+
+  {% else %}
+    <p> You are not authorized.</p>
+  {% endif %}
+</body>
+</html>
+
+
+

@@ -1,0 +1,14 @@
+{% extends "base_bootstrap.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block leaderboard %}
+<h1>Match Detail</h1>
+
+Here goes the match details.
+Match No.: {{match.id}}
+
+<img src = "{{match.teamA.flag.url}}" /> {{match.teamA}} vs {{match.teamB}} <img src = "{{match.teamB.flag.url}}" />
+
+
+{% endblock %}

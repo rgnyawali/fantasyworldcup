@@ -1,0 +1,20 @@
+{% extends "base_bootstrap.html" %}
+
+{% block leaderboard %}
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% load crispy_forms_tags %}
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form|crispy }}
+<input type="submit" class="btn btn-primary buttonholder" value="Login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+<style>.buttonholder{text-align:center;}</style>
+{% endblock %}
+
+{% block leftgroups %} {% endblock %}
+{% block rightgroups %} {% endblock %}
+

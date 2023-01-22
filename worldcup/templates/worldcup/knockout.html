@@ -1,0 +1,17 @@
+{% extends "base_bootstrap.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block leaderboard %}
+<h1>Your Knockout Predictions</h1>
+<p>Select your teams for the knockout round. The deadline to select your teams is <strong>1 day before</strong> the start of the group matches.<p>
+<p>You have to make all the selections in one session. However, you can change your selection, if you wish, before the deadline.</p>
+<form method="POST">
+    {% csrf_token %}
+    {{ form |crispy}}
+    <div class="buttonholder"><input type="submit" value="Save Predictions and Go To Next Step"></div>
+<style>.buttonholder{text-align:center;}</style>
+  </form>
+
+
+{% endblock %}

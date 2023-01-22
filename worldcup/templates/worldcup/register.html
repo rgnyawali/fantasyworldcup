@@ -1,0 +1,20 @@
+{% extends "base_bootstrap.html" %}
+
+{% block leftgroups %} {% endblock %}
+{% block rightgroups %} {% endblock %}
+
+{% block leaderboard %}
+<div>
+	<h1>Register</h1>
+	{% load crispy_forms_tags %}
+	<form method="POST">
+		{% csrf_token %}
+
+		{{ register_form|crispy}}
+		<input type="submit" class="btn btn-primary" value="Register" />
+
+	</form>
+	<p>If you already have an account, <a href="{% url 'login' %}?next={% url 'worldcup:worldcup_index' %}">login</a> instead.</p>
+</div>
+{% endblock %}
+
